@@ -1,0 +1,25 @@
+# @package _global_
+exp_params:
+  exp_name : 'infomorphic_random_projection'
+  goal_type: 'naive'
+  model_class: 'InfomorphicRandomProjectionModel'
+
+layer_params:
+  hidden_layer1:
+    input_sizes: 
+      - ${dataset.sample_size}
+      - ${dataset.label_size}
+    gamma: [0,0,0,0,0]
+    activation: 
+      type: 'im_net.activation_functions.GraetzActivationHeaviside'
+      params:
+        k1: 0.9 # receptive (feedforward) drives, contextual modulates
+    bias: [True, True]
+    binning: binning_bivariate_hidden_layer
+
+optim_params:
+  optimizer1: #Hidden Layer 1
+    type: 'torch.optim.Adam'
+    params:
+      lr: 0.0 #Don't train the hidden layer
+      weight_decay: 0.0 #Don't train the hidden layer

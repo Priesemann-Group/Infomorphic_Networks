@@ -1,0 +1,21 @@
+# @package _global_
+exp_params:
+  exp_name : 'infomorphic_context_lateral_with_feedback'
+  model_class: 'InfomorphicContextLateralWithFeedbackModel'
+
+layer_params:
+  hidden_layer1:
+    input_sizes: 
+      - ${dataset.sample_size}
+      - ${dataset.label_size}
+      - ${layer_params.hidden_layer1.output_size}
+    gamma: ??? #loaded from goals/...
+    activation: 
+      type: 'im_net.activation_functions.Schneider3SourceActivation'
+      params:
+        c1: 0.1 # contextual (feedback) slightly modulates
+        c2: 0.1 # lateral slightly modulates
+    bias: [True, True, True]
+    binning: binning_trivariate_hidden_layer
+    max_connections: 100
+

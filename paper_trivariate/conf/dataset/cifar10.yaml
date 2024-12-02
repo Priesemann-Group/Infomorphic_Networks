@@ -1,0 +1,6 @@
+name: "CIFAR10"
+sample_size: 3072
+label_size: 10
+
+params:
+  frac_val: 0.2

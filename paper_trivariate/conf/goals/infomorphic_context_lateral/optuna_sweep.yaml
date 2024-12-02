@@ -1,0 +1,71 @@
+# @package _global_
+exp_params:
+  goal_type: optimization_runs
+
+# @package _global_
+hydra:
+  sweeper:
+    params:
+      g.r_c_l: interval(-1, 1)    # {1}{2}{3} 
+      g.r_c: interval(-1, 1)      # {1}{2}=1.0 in naive setting
+      g.r_l: interval(-1, 1)      # {1}{3}
+      g.c_l: interval(-1, 1)      # {2}{3}
+      g.r_cl: interval(-1, 1)     # {1}{23}
+      g.c_rl:  interval(-1, 1)    # {2}{13}
+      g.l_rc: interval(-1, 1)     # {3}{12}
+      g.r:  interval(-1, 1)       # {1}
+      g.c:  interval(-1, 1)       # {2}
+      g.l:  interval(-1, 1)       # {3}
+      g.rc_rl_cl: interval(-1, 1) # {12}{13}{23}
+      g.rc_rl: interval(-1, 1)    # {12}{13}
+      g.rc_cl: interval(-1, 1)    # {12}{23}
+      g.rl_cl: interval(-1, 1)    # {13}{23}
+      g.rc: interval(-1, 1)       # {12}
+      g.rl: interval(-1, 1)       # {13}
+      g.cl: interval(-1, 1)       # {23}
+      g.rcl: interval(-1, 1)      # {123}
+      #g.h_res: choice(0.0)        # h_res
+
+g:
+  r_c_l: ??
+  r_c:  ??
+  r_l:  ??
+  c_l:  ??
+  r_cl: ??
+  c_rl: ??
+  l_rc: ??
+  r: ??
+  c: ??
+  l: ??
+  rc_rl_cl: ??
+  rc_rl: ??
+  rc_cl: ??
+  rl_cl: ??
+  rc: ??
+  rl: ??
+  cl: ??
+  rcl: ??
+  h_res: ??
+ 
+layer_params:
+  hidden_layer1:
+      gamma:
+      - ${g.r_c_l}    # {1}{2}{3}
+      - ${g.r_c}      # {1}{2}
+      - ${g.r_l}      # {1}{3}
+      - ${g.c_l}      # {2}{3}
+      - ${g.r_cl}     # {1}{23}
+      - ${g.c_rl}     # {2}{13}
+      - ${g.l_rc}     # {3}{12}
+      - ${g.r}        # {1}
+      - ${g.c}        # {2}
+      - ${g.l}        # {3}
+      - ${g.rc_rl_cl} # {12}{13}{23}
+      - ${g.rc_rl}    # {12}{13}
+      - ${g.rc_cl}    # {12}{23}
+      - ${g.rl_cl}    # {13}{23}
+      - ${g.rc}       # {12}
+      - ${g.rl}       # {13}
+      - ${g.cl}       # {23}
+      - ${g.rcl}      # {123}
+      - 0 #${g.h_res}    # h_res

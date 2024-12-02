@@ -1,0 +1,32 @@
+# @package _global_
+exp_params:
+  exp_name : 'infomorphic_readout'
+  goal_type: 'naive'
+  model_class: 'InfomorphicReadoutModel'
+
+layer_params:
+  output_layer:
+    input_sizes: 
+      - ${dataset.sample_size}
+      - ${dataset.label_size}
+    gamma:
+      - -0.2 # {1}
+      - 0.1 # {2}
+      - 1.0 # {1}{2}
+      - 0.1 # {12}
+      - 0 # h_res
+    activation: 
+      type: 'im_net.activation_functions.GraetzActivation'
+      params:
+        k1: 1 # receptive (feedforward) drives, no modulation
+    bias: [True, True]
+    binning: binning_output_layer
+
+
+#Empty as we only have the readout layer which is defined in the base config
+optim_params_single:
+  optimizer2: #Output Layer
+    type: 'torch.optim.Adam'
+    params:
+      lr: 0.003
+      weight_decay: 0.00015 

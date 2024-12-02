@@ -1,0 +1,89 @@
+defaults:
+  - _self_
+  - dataset: mnist
+  - storage: debugging
+  - hydra: hydra_base_config  
+  - override hydra/launcher: joblib
+  
+# find the model specific configs in the model_variant folder
+exp_params:
+  exp_name : ???
+  goal_type: ???
+  model_class: ???
+  epochs: 2
+  seed: 30
+  batch_size: 1024
+  pref_gpu: True
+
+layer_params: 
+  hidden_layer1:
+    discrete_output_values: [-1,1]
+    output_size: 100  
+
+  output_layer:
+    discrete_output_values: [-1,1] 
+    input_sizes: 
+      - ${layer_params.hidden_layer1.output_size}
+      - ${dataset.label_size}
+    output_size: ${dataset.label_size} 
+    gamma:
+      - -0.2 # {1}
+      - 0.1 # {2}
+      - 1.0 # {1}{2}
+      - 0.1 # {12}
+      - 0 # h_res
+    activation: 
+      type: 'im_net.activation_functions.GraetzActivation'
+      params:
+        k1: 1 # receptive (feedforward) drives, no modulation
+    bias: [True, True]
+    binning: binning_output_layer
+
+binning_params:
+  binning_trivariate_hidden_layer:
+    type: 'im_net.prob_estim.BinningFixedSize'
+    params:
+      symmetric: True
+      normalize: True
+      n_bins:
+        - 20
+        - 20
+        - 20
+      edges:
+        - [-20,20]
+        - [-20,20]
+        - [-20,20]
+
+  binning_bivariate_hidden_layer:
+    type: 'im_net.prob_estim.BinningAdaptiveSize'
+    params:
+      symmetric: True
+      normalize: True
+      n_bins:
+        - 20
+        - 20
+      edges:
+        - [-20,20]
+        - [-20,20]
+
+  binning_output_layer:
+    type: 'im_net.prob_estim.BinningAdaptiveSize'
+    params:
+      symmetric: True
+      normalize: True
+      n_bins:
+        - 20
+        - 20
+
+#infomorphic_defaults: # only used for infomorphic (non-backprop) variants
+optim_params:
+  optimizer1: #Hidden Layer 1
+    type: 'torch.optim.Adam'
+    params:
+      lr: 0.002 
+      weight_decay: 0.00035 
+  optimizer2: #Output Layer
+    type: 'torch.optim.Adam'
+    params:
+      lr: 0.003
+      weight_decay: 0.00015

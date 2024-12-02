@@ -1,0 +1,28 @@
+# @package _global_
+exp_params:
+  goal_type: optimization_runs
+
+hydra:
+  sweeper:
+    params:
+      g.r: interval(-1, 1)
+      g.c: interval(-1, 1)
+      g.r_c: interval(-1, 1) 
+      g.rc: interval(-1, 1) 
+      g.h_res: interval(-1, 1)
+
+g:
+  r: ??
+  c: ??
+  r_c: ??
+  rc: ??
+  h_res: ??
+
+layer_params:
+  hidden_layer1:
+    gamma:
+      - ${g.r}      # {1}
+      - ${g.c}      # {2}
+      - ${g.r_c}    # {1}{2}
+      - ${g.rc}     # {12}
+      - ${g.h_res}  # h_res

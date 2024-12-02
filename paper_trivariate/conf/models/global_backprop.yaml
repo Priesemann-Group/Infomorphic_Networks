@@ -1,0 +1,26 @@
+# @package _global_
+exp_params:
+  exp_name: 'global_backprop'
+  goal_type: 'naive'
+  model_class: 'GlobalBackpropModel'
+
+layer_params:
+  hidden_layer1:
+    input_sizes: 
+      - ${dataset.sample_size}
+      - ${dataset.label_size}
+      - ${layer_params.hidden_layer1.output_size}
+    activation: 
+      type: 'im_net.activation_functions.Schneider3SourceActivationBackprop' 
+      params:
+        c1: 0.1 # contextual (feedback) slightly modulates
+        c2: 0.1 # lateral slightly modulates
+    bias: [True, True, True]
+    binning: binning_trivariate_hidden_layer
+
+optim_params_backprop:
+  optimizer:
+    type: 'torch.optim.Adam'
+    params:
+      lr: 0.001
+

@@ -1,0 +1,12 @@
+# @package _global_
+exp_params:
+  goal_type: optimized_1_100
+
+layer_params:
+  hidden_layer1:
+    gamma:
+      - -0.09897422104624026 # {1} 
+      - 0.3916122183491769 # {2}
+      - 0.5117811143405198 # {1}{2} redundancy
+      - 0.5941935589368678 #0.5941935589368678 # {12} synergy
+      - 0.08852570460263162 #8852570460263162 # h_res

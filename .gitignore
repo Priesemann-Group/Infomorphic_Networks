@@ -1,0 +1,15 @@
+__pycache__/*
+experiments/*
+datasets/*
+conf/__pycache__/*
+im_net/__pycache__/*
+external_libraries/*
+Plots/*
+Notes/*
+MNIST/*
+paper_trivariate/MNIST/*
+
+infomorph_networks.code-workspace
+.vscode/launch.json
+.vscode/settings.json
+notforGithub/*

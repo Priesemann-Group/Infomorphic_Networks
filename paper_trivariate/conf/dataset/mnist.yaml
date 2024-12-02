@@ -1,0 +1,6 @@
+name: 'MNIST'
+sample_size: 784
+label_size: 10
+
+params:
+  frac_val: 0.2
