@@ -1,4 +1,8 @@
 # Infomorphic Networks
+This repository contains the PyTorch implementation of the methods described in the paper [*"What Should a Neuron Aim For? Designing Local Objective Functions Based on Information Theory."*](https://arxiv.org/abs/2412.02482). The code introduces a novel PyTorch layer type that leverages **Partial Information Decomposition (PID)** to optimize local information processing of each neuron.
+## Contributions
+The *Infomorphic_Network* package was developed by [Valentin Neuhaus](https://github.com/vneuhaus) in cooperation with [Andreas C. Schneider](https://github.com/ac-schneider) and [David A. Ehrlich](https://github.com/daehrlich) and is actively maintained by
+the aforementioned.
 
 ## Setup environment
 All packages needed to run the code are listed in `env.yaml`. To create a conda environment with all the necessary packages and dependencies, and to activate the environment, run the following commands:
