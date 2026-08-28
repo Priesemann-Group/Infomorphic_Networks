@@ -1,0 +1,11 @@
+# @package _global_
+bisect:
+  threshold: 0.95
+  guess: 1.6
+  n_checkpoints: 15
+  low: 0.01
+  high: 2.0
+  interval: 0.02
+
+params:
+  exp_name : 'Bisection'

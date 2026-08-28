@@ -1,0 +1,5 @@
+# @package _global_
+### sets the external weights to 0, tba: weight decay
+params:
+  switch_epoch: 5
+  switch_scale: 1e-10

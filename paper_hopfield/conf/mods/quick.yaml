@@ -1,0 +1,14 @@
+# @package _global_
+# this is a minimally small network that still exhibits most behaviours of the bigger ones,
+# but has the advantage of being quick to train. Will show higher values for alpha>1 than bigger networks.
+defaults:
+ - override /storage: minimal
+params: 
+  neurons: 25
+  patterns: 25
+  epochs: 300
+  reps: 1
+  pref_gpu: True
+binning:
+  params:
+    n_bins: [2,60]

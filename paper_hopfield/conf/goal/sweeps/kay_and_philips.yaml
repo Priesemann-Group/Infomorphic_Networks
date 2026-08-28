@@ -1,0 +1,23 @@
+# @package _global_
+hydra:
+  sweeper:
+    params:
+      g.r_cond: interval(-1, 1)
+      g.l_cond: interval(-1, 1)
+      g.co_info: interval(-1, 1) 
+      g.h_res: interval(-1, 1)
+
+g:
+  r_cond: ??
+  l_cond: ??
+  co_info: ??
+  h_res: ??
+
+model:
+  layer1:
+    gamma:
+      - ${eval:'${g.r_cond}'} # {1}
+      - ${eval:'${g.l_cond}'} # {2}
+      - ${eval:'${g.co_info}'} # {1}{2}
+      - ${eval:'${g.r_cond}+${g.l_cond}-${g.co_info}'} # {12}
+      - ${g.h_res} # h_res

@@ -1,0 +1,16 @@
+experiments/*
+datasets/*
+logfiles/*
+**/__pycache__/*
+im_net/__pycache__/*
+external_libraries/*
+plotting/figures/**
+Plots/*
+Notes/*
+plotting/scratchpad/*
+infomorph_networks.code-workspace
+.vscode/launch.json
+.vscode/settings.json
+.env
+
+*.log

@@ -1,0 +1,5 @@
+# @package _global_
+optim_params:
+   name: 'torch.optim.SGD'
+   params:
+    lr: 0.1 #0.005 for Adam and 0.1 for SGD both seem to work

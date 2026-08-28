@@ -1,0 +1,13 @@
+# @package _global_
+defaults:
+ - override /model: hebbian_start
+ - override /binning: adaptive
+
+hebb_sweep:
+  start: 0.01
+  stop: 2.01
+  n_points: 41
+  mode: 'lin' #'lin' possible, 'log' tba
+
+params:
+  exp_name : 'HebbSweep'

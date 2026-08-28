@@ -1,0 +1,114 @@
+defaults:
+  - _self_
+  - dataset: mnist
+  - storage: custom
+  - hydra: hydra_base_config  
+  - override hydra/launcher: joblib
+  
+# find the model specific configs in the model_variant folder
+exp_params:
+  exp_name : ???
+  goal_type: ???
+  model_class: ???
+  epochs: 100
+  seed: 30 #2
+  batch_size: 1024
+  bins: 20
+  pref_gpu: True
+
+layer_params: 
+  hidden_layer1:
+    # repetitions: 100
+    discrete_output_values: [-1,1]
+    output_size: 2000
+
+  # hidden_layer2:
+  #   discrete_output_values: [-1,1]
+  #   output_size: 2000
+
+  # hidden_layer3:
+  #   discrete_output_values: [-1,1]
+  #   output_size: 100
+
+  output_layer:
+    discrete_output_values: [-1,1] 
+    input_sizes: 
+      - ${layer_params.hidden_layer1.output_size}
+      - ${dataset.label_size}
+    output_size: ${dataset.label_size} 
+    gamma:
+      - -0.2 # {1}
+      - 0.1 # {2}
+      - 1.0 # {1}{2}
+      - 0.1 # {12}
+      - 0 # h_res
+    activation: 
+      type: 'im_net.activation_functions.GraetzActivation'
+      params:
+        k1: 1 # receptive (feedforward) drives, no modulation
+    bias: [True, True]
+    binning: binning_output_layer
+
+binning_params:
+  binning_trivariate_hidden_layer:
+    type: 'im_net.prob_estim.BinningFixedSize'
+    params:
+      normalize: True
+      # sigma_fraction: 1e-10
+      n_bins:
+        - ${exp_params.bins}
+        - ${exp_params.bins}
+        - ${exp_params.bins}
+      edges:
+        - [-20,20]
+        - [-20,20]
+        - [-20,20]
+
+  binning_bivariate_hidden_layer:
+    type: 'im_net.prob_estim.BinningAdaptiveSize'
+    params:
+      # adaptive_sigma: True
+      # sigma_fraction: 0.8
+      normalize: True
+      n_bins:
+        - 20
+        - 20
+      edges:
+        - [-20,20]
+        - [-20,20]
+
+  binning_output_layer:
+    type: 'im_net.prob_estim.BinningAdaptiveSize'
+    params:
+      normalize: True
+      # adaptive: True
+      # kernel: 'Sigmoid'
+      # sigma_fraction: [0.5,0.5]
+      # width_factor: 3000000
+      # sigma: 1e-3
+      n_bins:
+        - ${exp_params.bins}
+        - ${exp_params.bins}
+
+#infomorphic_defaults: # only used for infomorphic (non-backprop) variants
+optim_params:
+  optimizer1: #Hidden Layer 1
+    type: 'torch.optim.Adam'
+    params:
+      lr: 0.002
+      weight_decay: 0.00035
+  optimizer2: #Hidden Layer 2 
+    type: 'torch.optim.Adam'
+    params:
+      lr: 0.003
+      weight_decay: 0.00015 
+  # optimizer3: #Output Layer
+  #   type: 'torch.optim.Adam'
+  #   params:
+  #     lr: 0.004
+  #     weight_decay: 0.0001
+  # optimizer4: #Output Layer
+  #   type: 'torch.optim.Adam'
+  #   params:
+  #     lr: 0.005
+  #     weight_decay: 0.00015

@@ -1,0 +1,10 @@
+name: 'DescentL2'
+bias: True #Tolmachev forces use of bias, implement natively
+len: ${params.neurons}
+params:
+  N: ${params.neurons}
+  sc: False
+  incremental: False
+  tol: 1e-3
+  lmbd: 1
+  alpha: 0.001

@@ -1,0 +1,10 @@
+name: 'GardnerKM'
+bias: True #Tolmachev forces use of bias, implement natively
+len: ${params.neurons}
+eps: 1e-10
+params:
+  N: ${params.neurons}
+  sc: False
+  lr: 1
+  k: 1
+  maxiter: 1000

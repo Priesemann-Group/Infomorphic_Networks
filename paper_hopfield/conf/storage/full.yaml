@@ -1,0 +1,23 @@
+defaults:
+  - testing: basic
+
+performance: True #acc, symmetry and norm.
+properties: True
+pid: True 
+alt_pid: False # if true, compute alternative PID (e.g. MMI) in addition to the main PID which is used for optimization
+alt_pids: [] # ['MMI','WB', 'PM', 'SX','BROJA'] 
+weights: True
+patterns: True
+grads: False
+require_comment: True #disable for cluster-use
+progress_bars: True #disable for cluster_use
+final:
+  acc: True
+  pid: False
+  weights: False
+  post_process: False
+  noise_fraction: null #o.
+fixed_test:
+  deterministic: False
+  iterations: 20 #legacy from Marcel
+full_model: False

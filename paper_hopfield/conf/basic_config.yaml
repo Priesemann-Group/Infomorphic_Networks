@@ -1,0 +1,42 @@
+defaults:
+  - _self_
+  - binning: fixed
+  - storage: minimal
+  - dataset: basic
+  - model: basic
+  - hydra: basic
+  - goal: redundancy #must happen after model
+  - override hydra/launcher: joblib
+
+test_val: 1 
+params:
+  n_bins: 60
+  exp_name : 'Infomorphic'
+  pref_gpu: True
+  num_workers: 0 #only zero works, dataset is loaded onto gpu directly
+  seed: 4
+  neurons: 100
+  alpha: 0.2
+  patterns: ${int:${eval:'${params.neurons} * ${params.alpha}'}}
+  epochs: 100
+  reps: 0 #REPLACED BY (correlated) noise in internal inputs
+  simple_symmetric: False 
+  noisy_transmission: False #if True, states will not be set directly
+  normalization: null #opt.
+  threshold: null #for threshold_learning
+  dtype: float #set double for float64
+
+optim_params:
+   name: 'torch.optim.Adam'
+   params:
+    lr: 0.05 #0.05 by default
+
+
+
+datamanager_params:
+  save_model: False
+  cp_dir: 'checkpoints'
+  cp_spacing: 'log' #'linear' or 'log'
+  cp_number: 1
+
+

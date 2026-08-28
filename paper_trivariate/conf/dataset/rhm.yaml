@@ -1,0 +1,22 @@
+name: "RHM"
+
+params:
+  frac_val: 0.2
+
+generation:
+  num_features: 3
+  num_classes: 4
+  num_synonyms: 3
+  tuple_size: 3
+  num_layers: 2
+  seed_rules: 0
+  seed_sample: 1
+  train_size: 1000
+  test_size: 100
+  input_format: 'onehot'
+  whitening: 1
+  transform: Null
+  replacement: True
+
+sample_size: ${eval:'${.generation.num_features}*${.generation.tuple_size}**${.generation.num_layers}'}
+label_size: ${eval:'${.generation.num_classes}'}

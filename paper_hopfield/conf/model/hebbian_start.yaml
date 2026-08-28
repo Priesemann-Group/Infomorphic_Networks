@@ -1,0 +1,27 @@
+name: 'IMHopfield'
+max_iterations: ${params.neurons}
+sequential: False # memory leak fixed
+ordered: False
+binary: False
+init:
+  name: 'default' #!!!other inits not implemented
+  external_scale: 1e-10
+  internal_scale: 1
+  start_symmetric: False
+  sc_scale: ???
+  hebbian_init: True
+layer1:
+  biases: 
+    - False
+    - False
+  input_sizes: 
+    - ${params.neurons} #external/context
+    - ${params.neurons} #internal/lateral
+  output_size: ${params.neurons}
+  gamma: ??
+  activation: 'im_net.activation_functions.BinaryHeaviside'
+  activation_params:
+    
+  discrete_output_values: [-1, 1]
+  self_connections: False
+  freeze_external: False

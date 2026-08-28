@@ -1,0 +1,6 @@
+fixed_test:
+  deterministic: False
+  iterations: 20 #legacy from Marcel
+
+threshold_test: False
+threshold: 0.95

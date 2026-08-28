@@ -1,0 +1,6 @@
+name: 'im_net.prob_estim.BinningFixedSize'
+params:
+  n_bins: 
+    - 2
+    - ${params.n_bins}
+  edges: [[-20, 20], [-20,20]]

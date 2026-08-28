@@ -1,0 +1,33 @@
+defaults:
+  - _self_
+  - hydra: basic
+  - dataset: basic
+  - storage: basic
+  - eval_model: basic
+  - learning_rule: hebb
+  - override hydra/launcher: joblib
+
+params:
+  exp_name : 'eval'
+  neurons: 100
+  pref_gpu: True
+  num_workers: 0 #what option actually speeds things up?
+  seed: 4
+  start: 1
+  stop: 205
+  step: 5
+
+testing:
+  noise: 0
+
+datamanager_params:
+  save_model: False
+  cp_dir: 'checkpoints'
+  cp_spacing: 'log' #'linear' or 'log'
+  cp_number: 1
+
+optim_params:
+   name: 'torch.optim.Adam'
+   params:
+    lr: 1e-1 #0.05 by default
+    #weight_decay: 1e-4

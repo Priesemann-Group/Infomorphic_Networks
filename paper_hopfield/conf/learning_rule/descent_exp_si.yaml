@@ -1,0 +1,10 @@
+name: 'DescentExpSI'
+bias: True #necessary for Tolmachev
+len: ${params.neurons}
+eps: 1e-10 #initial scale
+params:
+  N: ${params.neurons}
+  sc: True
+  incremental: False
+  tol: 1e-3
+  lmbd: 0.5

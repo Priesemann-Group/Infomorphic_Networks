@@ -1,0 +1,5 @@
+name: 'trivial'
+bias: False
+len: ${params.neurons} #unify with tolmachev
+params:
+  

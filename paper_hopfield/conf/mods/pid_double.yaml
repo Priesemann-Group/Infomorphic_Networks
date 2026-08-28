@@ -1,0 +1,10 @@
+# @package _global_
+### sets the external weights to 0, tba: weight decay
+alternative_binning:
+  name: 'im_net.prob_estim.BinningAdaptiveSize'
+  params:
+    n_bins: [2, 60]
+    edges: [[-20, 20], [-20,20]]
+    use_bincenters: False
+    normalize: True
+    symmetric: True

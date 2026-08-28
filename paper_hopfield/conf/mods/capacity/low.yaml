@@ -1,0 +1,15 @@
+# @package _global_
+
+capacity:
+  interrupt: False
+  threshold: 1 #when training will STOP, basically unusable
+  epsilon: 0.95 #when training will count as SUCCESSFUL
+  start: 0.01
+  step: 0.01
+  stop: 0.11
+
+params:
+  exp_name : 'Capacity'
+
+storage:
+  capacity: True

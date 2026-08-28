@@ -1,0 +1,9 @@
+name: 'im_net.prob_estim.BinningDifferentiable'
+params:
+  sigma: 0.6
+  n_bins: [2, 60]
+  edges: [[-20, 20], [-20,20]]
+  normalize: True
+  adaptive_sigma: True
+  sigma_fraction: 1
+  padding: 1

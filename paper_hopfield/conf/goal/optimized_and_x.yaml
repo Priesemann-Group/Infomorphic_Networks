@@ -1,0 +1,10 @@
+# @package _global_
+pi_x: ??
+model:
+  layer1:
+    gamma: 
+      - ${pi_x}
+      - -0.68
+      -  0.68
+      - -0.77
+      - -0.8

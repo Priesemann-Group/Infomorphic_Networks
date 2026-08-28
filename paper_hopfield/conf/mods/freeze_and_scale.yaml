@@ -1,0 +1,10 @@
+# @package _global_
+model:
+  init:
+    external_scale: 2.3
+    internal_scale: 0.001
+    start_symmetric: False
+    sc_scale: ???
+    hebbian_init: False
+  layer1:
+    freeze_external: True

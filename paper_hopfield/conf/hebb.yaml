@@ -1,0 +1,32 @@
+defaults:
+  - _self_
+  - hydra: basic
+  - dataset: basic
+  - storage: basic
+  - override hydra/launcher: joblib
+
+params:
+  exp_name : 'Hebb'
+  neurons: 100
+  epochs: ${params.stop}
+  pref_gpu: True
+  num_workers: 0 #what option actually speeds things up?
+  seed: 4
+  start: 1
+  stop: 151
+  step: 1
+
+hebbian_params:
+  sequential: False
+  ordered: False
+  binary: False
+  max_iterations: ${params.neurons}
+  layer1:
+    network_size: ${params.neurons}
+    bias: False
+
+datamanager_params:
+  save_model: False
+  cp_dir: 'checkpoints'
+  cp_spacing: 'log' #'linear' or 'log'
+  cp_number: 1

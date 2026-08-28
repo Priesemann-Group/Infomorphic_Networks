@@ -1,0 +1,11 @@
+# @package _global_
+
+#best
+model:
+  layer1:
+    gamma: 
+      - 0.48
+      - -0.16
+      -  0.25
+      -  0.04
+      - -0.63

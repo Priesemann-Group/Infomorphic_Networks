@@ -1,0 +1,6 @@
+name: 'im_net.prob_estim.BinningCDFDiff'
+params:
+  n_bins: [2, 60]
+  edges: [[-20, 20], [-20,20]]
+  width_factor: 2.5
+  normalize: False

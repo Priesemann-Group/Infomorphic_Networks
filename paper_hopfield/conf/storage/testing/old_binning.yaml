@@ -1,0 +1,13 @@
+defaults:
+  - basic
+alternative_pid:
+  name: 'old_binning'
+  final_only: False #not yet implemented
+  binning:
+    name: 'im_net.prob_estim.BinningAdaptiveSize'
+    params:
+      n_bins: [2, 60]
+      edges: [[-20, 20], [-20,20]]
+      use_bincenters: False
+      normalize: True
+      symmetric: True

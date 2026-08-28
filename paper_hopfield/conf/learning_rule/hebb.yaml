@@ -1,0 +1,5 @@
+name: 'Hebb'
+bias: False
+len: ${params.neurons} #unify with tolmachev
+params:
+  

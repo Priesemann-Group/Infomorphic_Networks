@@ -1,0 +1,12 @@
+# @package _global_
+exp_params:
+  goal_type: optimized_2_100
+
+layer_params:
+  hidden_layer1:
+    gamma: #Goal function obtained from optimization (lateral setup)
+      - 0.8050669838297834    # {1}
+      - -0.4079175158311413  # {2}
+      - 0.5380270551460712    # {1}{2}
+      - 0.5634098766546485    # {12}
+      - -0.009729245933249309   # h_res

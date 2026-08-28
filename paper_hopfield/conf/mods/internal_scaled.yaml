@@ -1,0 +1,5 @@
+# @package _global_
+model:
+  init:
+    external_scale: 2.3
+    internal_scale: ${eval:'0.01/${sqrt:${params.neurons}}'}

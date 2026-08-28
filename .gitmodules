@@ -1,0 +1,6 @@
+[submodule "BROJA_2PID"]
+	path = external/BROJA_2PID
+	url = https://github.com/Abzinger/BROJA_2PID.git
+[submodule "dit"]
+	path = external/dit
+	url = https://github.com/dit/dit.git

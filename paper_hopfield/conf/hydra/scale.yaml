@@ -1,0 +1,30 @@
+defaults:
+  - override /storage@_global_.storage: cluster
+  - override sweeper: optuna
+  - override sweeper/sampler: cmaes
+
+run:
+  dir: ${oc.env:ALTEXPDIR, experiments}/optuna_runs/${now:%Y-%m-%d}/${now:%H-%M-%S}
+sweep:
+  dir: ${oc.env:ALTEXPDIR, experiments}/optuna_runs/${now:%Y-%m-%d}/${now:%H-%M-%S} #
+  subdir: ${hydra.job.num}
+launcher:
+  _target_: hydra_plugins.hydra_joblib_launcher.joblib_launcher.JoblibLauncher
+  n_jobs: -1
+sweeper:
+  sampler:
+    _target_: optuna.samplers.CmaEsSampler
+  _target_: hydra_plugins.hydra_optuna_sweeper.optuna_sweeper.OptunaSweeper
+  direction: maximize
+  n_trials: 200
+  n_jobs: 4
+  storage: "sqlite:///${oc.env:ALTEXPDIR, experiments}/scale_results.sqlite3" # 
+  study_name: null # Name of the study. If there are multiple studies in the same database, the study name must be unique. Otherwise, the existing study will be resumed.
+  params: 
+    params.neurons: 25
+    params.normalization: 1
+    model.layer1.freeze_external: True
+    model.layer1.beta: interval(0.1,5)
+    model.initializer.external_scale: interval(0.2, 5)
+
+    

@@ -1,0 +1,9 @@
+# @package _global_
+model:
+  layer1:
+    gamma: #0.1 I(Z:X:Y)
+      - 0
+      - 0
+      - 1 
+      - -1
+      - 0

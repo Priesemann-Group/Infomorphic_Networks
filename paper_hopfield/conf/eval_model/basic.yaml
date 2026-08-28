@@ -1,0 +1,7 @@
+sequential: False
+max_iterations: ${params.neurons}
+ordered: False
+binary: False
+layer1:
+  network_size: ${params.neurons}
+  bias: ${learning_rule.bias}

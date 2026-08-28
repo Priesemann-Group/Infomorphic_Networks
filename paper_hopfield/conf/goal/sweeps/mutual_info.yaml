@@ -1,0 +1,32 @@
+# @package _global_
+hydra:
+  sweeper:
+    params:
+      g.mi_r: interval(-1, 1)
+      g.mi_c: interval(-1, 1)
+      g.mi_double: interval(-1, 1) 
+      g.h_res: interval(-1, 1)
+
+# grid
+# hydra:
+#   sweeper:
+#     params:
+#       g.mi_r: range(-1,1.5,0.5)
+#       g.mi_c: range(-1,1.5,0.5)
+#       g.mi_double: range(-1,1.5,0.5)
+#       g.h_res: range(-1,1.5,0.5)
+
+g:
+  mi_r: ??
+  mi_c: ??
+  mi_double: ??
+  h_res: ??
+
+model:
+  layer1:
+    gamma:
+      - ${eval:'${g.mi_r} + ${g.mi_double}'} # {1}
+      - ${eval:'${g.mi_c} + ${g.mi_double}'} # {2}
+      - ${eval:'${g.mi_r} + ${g.mi_c} + ${g.mi_double}'} # {1}{2}
+      - ${g.mi_double} # {12}
+      - ${g.h_res} # h_res

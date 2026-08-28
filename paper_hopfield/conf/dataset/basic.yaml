@@ -1,0 +1,3 @@
+correlation: 'none' # 'none','spatial','temporal'
+p_bernoulli: 0.5 #find a better name for this
+batch_fraction: 1

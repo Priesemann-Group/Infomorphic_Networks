@@ -1,0 +1,12 @@
+comment: True
+
+full_model: True
+batchwise: True
+performance: True
+pid: True
+model_params: True
+final_model_params: False
+
+checkpoints:
+  spacing: 'all' #'linear' or 'log'
+  number: 10

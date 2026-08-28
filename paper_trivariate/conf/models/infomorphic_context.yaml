@@ -1,0 +1,19 @@
+# @package _global_
+exp_params:
+  exp_name : 'infomorphic_context'
+  model_class: 'InfomorphicContextModel'
+
+layer_params:
+  hidden_layer1:
+    input_sizes: 
+      - ${dataset.sample_size}
+      - ${dataset.label_size}
+    gamma: ???
+    activation: 
+      type: 'im_net.activation_functions.GraetzActivation'
+      params:
+        k1: 0.9 # receptive (feedforward) drives, contextual modulates
+    bias: [True, True]
+    binning: binning_bivariate_hidden_layer
+
+

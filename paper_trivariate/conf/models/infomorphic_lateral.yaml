@@ -1,0 +1,17 @@
+# @package _global_
+exp_params:
+  exp_name : 'infomorphic_lateral'
+  model_class: 'InfomorphicLateralModel'
+
+layer_params:
+  hidden_layer1:
+    input_sizes: 
+      - ${dataset.sample_size}
+      - ${layer_params.hidden_layer1.output_size}
+    gamma: ???
+    activation: 
+      type: 'im_net.activation_functions.GraetzActivation'
+      params:
+        k1: 0.9 # receptive (feedforward) drives, lateral modulates
+    bias: [True, True]
+    binning: binning_bivariate_hidden_layer

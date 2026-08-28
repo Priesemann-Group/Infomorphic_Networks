@@ -1,0 +1,32 @@
+name: 'IMHopfield'
+#dynamics
+max_iterations: 100
+sequential: False # memory leak fixed
+ordered: False
+binary: False
+init:
+  name: 'default' #!!!other inits not implemented
+  external_scale: 2.3
+  internal_scale: 0.001 #default ~6
+  start_symmetric: False
+  sc_scale: ???
+  hebbian_init: False
+layer1:
+  biases: 
+    - False
+    - False
+  input_sizes: 
+    - ${params.neurons} #external/context
+    - ${params.neurons} #internal/lateral
+  output_size: ${params.neurons}
+  gamma: ??
+  activation: 'im_net.activation_functions.SumActivation'
+  activation_params:
+    beta: 1
+  discrete_output_values: [-1, 1]
+  self_connections: False
+  freeze_external: True
+# name: 'torch.nn.init.uniform_'
+#     params:
+#       a: -1.0 # lower limit
+#       b: 1.0 # upper limit

@@ -1,0 +1,25 @@
+# @package _global_
+hydra:
+  sweeper:
+    params:
+      g.r: range(-1,1.5,0.5)
+      g.l: range(-1,1.5,0.5)
+      g.red: range(-1,1.5,0.5)
+      g.syn: range(-1,1.5,0.5)
+      g.h_res: range(-1,1.5,0.5)
+
+g:
+  r: ??
+  l: ??
+  red: ??
+  syn: ??
+  h_res: ??
+
+model:
+  layer1:
+    gamma:
+      - ${g.r} # {1}
+      - ${g.l} # {2}
+      - ${g.red} # {1}{2}
+      - ${g.syn} # {12}
+      - ${g.h_res} # h_res

@@ -1,0 +1,23 @@
+defaults:
+  - testing: basic
+
+performance: False #acc, acc_2, loss
+properties: False # norm, sym.
+pid: False
+alt_pid: False # if true, compute alternative PID (e.g. MMI) in addition to the main PID which is used for optimization
+alt_pids: [] # ['MMI','WB', 'PM', 'SX','BROJA']
+weights: False
+grads: False
+patterns: True 
+require_comment: True #disable for cluster-use 
+progress_bars: True #disable for cluster_use
+final:
+  acc: True
+  pid: True
+  weights: True
+  post_process: False
+  noise_fraction: null #o.
+
+full_model: False #necessary for DM2 interface
+checkpoints:
+  

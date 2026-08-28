@@ -1,0 +1,8 @@
+defaults:
+  - basic
+alternative_pid:
+  name: 'MakkehActivation'
+  activation_function:
+    activation: im_net.activation_functions.MakkehActivation
+    activation_params: 
+      beta: 1

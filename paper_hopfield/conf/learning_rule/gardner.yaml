@@ -1,0 +1,9 @@
+name: 'Gardner'
+bias: True #Tolmachev forces use of bias, implement natively
+len: ${params.neurons}
+eps: 1e-10 #initial value for weights to avoid divbyzero error
+params:
+  N: ${params.neurons}
+  sc: False
+  lr: 0.1
+  k: 0.01 #stability threshold kappa

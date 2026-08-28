@@ -1,0 +1,38 @@
+defaults:
+  - override /storage@_global_.storage: cluster
+  - override sweeper: optuna
+  - override sweeper/sampler: cmaes
+
+run:
+  dir: ${oc.env:ALTEXPDIR, experiments}/optuna_runs/${now:%Y-%m-%d}/${now:%H-%M-%S}
+sweep:
+  dir: ${oc.env:ALTEXPDIR, experiments}/optuna_runs/${now:%Y-%m-%d}/${now:%H-%M-%S-%f} #
+  subdir: ${hydra.job.num}
+launcher:
+  _target_: hydra_plugins.hydra_joblib_launcher.joblib_launcher.JoblibLauncher
+  n_jobs: -1
+# job:
+#   env_set:
+#     CUDA_VISIBLE_DEVICES: 0 # If working on a GPU machine with multiple users, it is recommended to set the GPU device to reduce the risk of conflicts
+# launcher:
+#   _target_: hydra_plugins.hydra_ray_launcher.ray_launcher.RayLauncher
+#   ray:
+#     init:
+#       object_store_memory: Null
+#       num_gpus: 0
+#       num_cpus: 128
+
+
+
+sweeper:
+  sampler:
+    _target_: optuna.samplers.CmaEsSampler
+    restart_strategy: 'ipop'
+  _target_: hydra_plugins.hydra_optuna_sweeper.optuna_sweeper.OptunaSweeper
+  direction: maximize
+  n_trials: 500
+  n_jobs: 4
+  storage: "sqlite:///${oc.env:ALTEXPDIR, experiments}/optuna_results.sqlite3" # 
+  study_name:  mock # Name of the study. If there are multiple studies in the same database, the study name must be unique. Otherwise, the existing study will be resumed.
+  params: 
+    

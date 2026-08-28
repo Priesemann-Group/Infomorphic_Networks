@@ -1,0 +1,4 @@
+# @package _global_
+params:
+  neurons: 75
+  patterns: 90

@@ -1,0 +1,22 @@
+run:
+  dir: ${oc.env:ALTEXPDIR, experiments}/${params.exp_name}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+sweep:
+  dir: ${oc.env:ALTEXPDIR, experiments}/${params.exp_name}/${now:%Y-%m-%d}/${now:%H-%M-%S}_multirun
+  #subdir: ${now:%H-%M-%S}
+#job:
+#  env_set:
+#    CUDA_VISIBLE_DEVICES: 3 # If working on a GPU machine with multiple users, it is recommended to set the GPU device to reduce the risk of conflicts
+
+launcher:
+  _target_: hydra_plugins.hydra_joblib_launcher.joblib_launcher.JoblibLauncher
+  n_jobs: 1
+  # ray:
+  #   init:
+  #     num_cpus: 5 # The number of CPUs corresponds to the number of workers
+sweeper:
+  params:
+    params.patterns: "choice(${log_space:${start},${stop},${points}})"
+
+# requires user to append the variables start stop points through command line
+    
+    

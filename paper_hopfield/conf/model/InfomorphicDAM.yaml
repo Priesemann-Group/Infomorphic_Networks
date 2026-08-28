@@ -1,0 +1,26 @@
+name: 'InfomorphicDAM'
+max_iterations: ${params.neurons}
+sequential: False # memory leak fixed
+init:
+  name: 'default'
+  external_scale: 1
+  internal_scale: ???
+  start_symmetric: False
+  sc_scale: ???
+  hebbian_init: False
+layer1:
+  biases: 
+    - False
+    - False
+  input_sizes: 
+    - ${params.neurons} #external/context
+    - ${params.neurons} #internal/lateral
+  output_size: ${params.neurons}
+  exponent: 3 #2 reproduces Hopfield network, 3 is minimal DAM
+  gamma: ??
+  activation: 'im_net.activation_functions.SumActivation'
+  activation_params:
+    beta: 1
+  discrete_output_values: [-1, 1]
+  self_connections: False
+  freeze_external: False

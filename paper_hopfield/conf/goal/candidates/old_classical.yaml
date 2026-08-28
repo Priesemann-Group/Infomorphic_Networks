@@ -1,0 +1,9 @@
+# @package _global_
+model:
+  layer1:
+    gamma: 
+      - 0.85
+      - 0.23
+      - 0.61
+      - 0.48
+      - -0.12

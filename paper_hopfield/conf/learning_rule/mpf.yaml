@@ -1,0 +1,6 @@
+name: 'mpf'
+bias: True
+sc: False
+params:
+  epochs: 40000
+  lr: .08

@@ -1,0 +1,10 @@
+# @package _global_
+defaults:
+ - /mods: sgd
+ - override /binning: adaptive
+ 
+params:
+  epochs: 5000
+model:
+  init:
+    external_scale: 1
